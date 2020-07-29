@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+:root {
+  --dark-green: hsl(147, 26%, 27%);
+  --green: hsl(148, 26%, 48%);
+  --light-green: hsl(149, 34%, 88%);
+  --white: hsl(0, 0%, 100%);
+  --space: 20px;
+  --color: hsl(0, 0%, 20%);
+  --color-focus: hsl(0, 0%, 50%);
+  --transition: all 0.2s ease-out;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  color: var(--color);
+}
+
+
+
+.form-box {
+  width: 320px;
+  max-width: 320px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.validation-box {
+  padding: var(--space);
+  background: var(--dark-green);
+  margin-bottom: var(--space);
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 10px 43px 0px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0px 10px 43px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 10px 43px 0px rgba(0, 0, 0, 0.12);
+  list-style: none;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.validation-item {
+  position: relative;
+  padding-left: calc(var(--space) + 8px);
+}
+
+.validation-item:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.validation-item.done {
+  color: hsla(0, 0%, 100%, 40);
+}
+
+.validation-icon {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  left: 0px;
+}
+
+.check {
+  stroke-dasharray: 45;
+  stroke-dashoffset: 45;
+  animation: check 0.2s 0.1s ease-in-out forwards;
+}
+
+@keyframes check {
+  0% {
+    stroke-dashoffset: 45;
+  }
+  100% {
+    stroke-dashoffset: 20;
+  }
+}
+
+.form-field {
+  display: flex;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 10px 43px 0px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0px 10px 43px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 10px 43px 0px rgba(0, 0, 0, 0.12);
+}
+
+.form-field:active {
+  transform: scale(0.98);
+  transition: var(--transition);
+}
+
+
+.form-input {
+  padding-left: var(--space);
+  padding-bottom: 2px;
+  padding-top: 25px;
+  padding-right: 80px;
+  width: 100%;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 8px;
+  font-size: 2.4em;
+  height: 40px;
+  overflow: hidden;
+  color: transparent;
+  text-shadow: 0 0 0 var(--green);
+}
+
+.form-label {
+  position: absolute;
+  font-size: 120%;
+  padding-left: var(--space);
+  transition: var(--transition);
+  width: calc(100% - 80px);
+  border-radius: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 600;
+  z-index: 1;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+.form-input:focus + .form-label {
+  font-size: 0.875em;
+  color: var(--color-focus);
+  background-color: transparent;
+  top: 20px;
+}
+
+.form-label::before {
+  content: '';
+  position: absolute;
+  height: 340%;
+  top: -25px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--white);
+  z-index: -1;
+  transition: var(--transition);
+}
+
+.form-input:focus + .form-label::before {
+  background-color: transparent;
+  opacity: 0;
+}
+
+
+@media only screen and (max-height: 320px) {
+  .validation-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .validation-item {
+    width: 40%;
+  }
+}
